@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reloj Digital Moderno</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="selector-estilos" aria-label="Selector de estilos">
+        <button data-estilo="neon" class="active" aria-label="Estilo Neon"><i class="fas fa-lightbulb"></i></button>
+        <button data-estilo="minimal" aria-label="Estilo Minimalista"><i class="fas fa-clock"></i></button>
+        <button data-estilo="nature" aria-label="Estilo Naturaleza"><i class="fas fa-leaf"></i></button>
+        <button data-estilo="retro" aria-label="Estilo Retro"><i class="fas fa-gamepad"></i></button>
+      </div>
+    <div id="background"></div>
+    <div class="container">
+        <h1>Digital</h1>
+        <div class="digital-clock">
+            <span id="time"></span>
+            <span id="date"></span>
+        </div>
+        <div class="timezone-selector">
+            <label for="timezone">Seleccione Zona Horaria:</label>
+            <select id="timezone">
+                <option value="UTC" selected>UTC</option>
+                <option value="America/New_York">Nueva York (EST)</option>
+                <option value="Europe/London">Londres (GMT)</option>
+                <option value="Asia/Tokyo">Tokio (JST)</option>
+                <option value="Australia/Sydney">Sídney (AEST)</option>
+            </select>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Reloj Digital Moderno - Todos los derechos reservados.</p>
+        <p>Desarrollado por [andres ricci y adrian medina]</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

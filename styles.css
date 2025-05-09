@@ -1,0 +1,240 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+
+/* Variables base */
+:root {
+  /* Tema NEON (default) */
+  --neon-fondo: #0f0f1a;
+  --neon-texto: #00fffc;
+  --neon-sombra: 0 0 10px #00fffc, 0 0 20px #0084ff;
+  --neon-boton: rgba(0, 255, 252, 0.1);
+  
+  /* Colores comunes */
+  --blanco: #ffffff;
+  --gris-claro: #d1d5db;
+  --gris-medio: #9ca3af;
+  --gris-oscuro: #4b5563;
+  --negro: #000000;
+  --sombra: 0 10px 30px rgba(0, 0, 0, 0.5);
+  
+  /* Tamaños de fuente */
+  --font-xl: 3rem;
+  --font-lg: 2.5rem;
+  --font-md: 1.2rem;
+  --font-sm: 1rem;
+  --font-xs: 0.9rem;
+}
+
+/* Reset y estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  background: var(--color-fondo, #20232a);
+  color: var(--color-texto, var(--blanco));
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.5s ease;
+}
+
+/* Fondo y partículas */
+#background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  background: linear-gradient(135deg, #3a3d42, #1d2025);
+}
+
+.particle {
+  position: absolute;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+}
+
+/* Contenedor principal */
+.container {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  box-shadow: var(--sombra);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+  font-size: var(--font-lg);
+  margin-bottom: 1.25rem;
+  color: var(--color-texto, var(--blanco));
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Reloj digital */
+.digital-clock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.digital-clock #time {
+  font-size: var(--font-xl);
+  font-weight: bold;
+  color: var(--gris-claro);
+  letter-spacing: 3px;
+}
+
+.digital-clock #date {
+  font-size: var(--font-md);
+  margin-top: 0.625rem;
+  color: var(--gris-medio);
+}
+
+/* Selector de zona horaria */
+.timezone-selector {
+  margin-top: 1.25rem;
+  font-size: var(--font-sm);
+  color: var(--color-texto, var(--blanco));
+}
+
+select {
+  padding: 0.3125rem 0.625rem;
+  font-size: var(--font-sm);
+  border: none;
+  border-radius: 5px;
+  background: var(--gris-oscuro);
+  color: var(--blanco);
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+}
+
+select:focus {
+  outline: none;
+  box-shadow: 0 0 10px var(--gris-oscuro);
+}
+
+/* Footer */
+footer {
+  position: absolute;
+  bottom: 0.625rem;
+  text-align: center;
+  width: 100%;
+  color: var(--gris-medio);
+  font-size: var(--font-xs);
+}
+
+/* Selector de estilos */
+.selector-estilos {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  display: flex;
+  gap: 0.625rem;
+  z-index: 100;
+}
+
+.selector-estilos button {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  color: var(--color-texto, var(--blanco));
+}
+
+.selector-estilos button.active {
+  transform: scale(1.2) translateY(-5px);
+  box-shadow: 0 0 10px currentColor;
+}
+
+/* Animaciones personalizadas */
+@keyframes neonGlow {
+  from { text-shadow: 0 0 5px var(--color-texto); }
+  to { text-shadow: 0 0 20px var(--color-texto); }
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.95; transform: scale(0.99); }
+  50% { opacity: 1; transform: scale(1.01); }
+}
+
+@keyframes pixelate {
+  0% { filter: contrast(150%); }
+  50% { filter: contrast(50%) brightness(1.2); }
+}
+
+/* Estilos dinámicos para temas */
+[data-tema="neon"] {
+  --color-fondo: var(--neon-fondo);
+  --color-texto: var(--neon-texto);
+  --color-sombra: var(--neon-sombra);
+  --color-boton: var(--neon-boton);
+  animation: neonGlow 2s infinite alternate;
+}
+
+[data-tema="minimal"] {
+  --color-fondo: var(--blanco);
+  --color-texto: #333333;
+  --color-sombra: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --color-boton: rgba(0, 0, 0, 0.05);
+}
+
+[data-tema="nature"] {
+  --color-fondo: #1a2f1a;
+  --color-texto: #a5d6a7;
+  --color-sombra: 0 0 15px #4caf50;
+  --color-boton: rgba(76, 175, 80, 0.1);
+  animation: breathe 6s infinite;
+}
+
+[data-tema="retro"] {
+  --color-fondo: #2d1b3d;
+  --color-texto: #ffeb3b;
+  --color-sombra: 0 0 10px #ff5722;
+  --color-boton: rgba(255, 87, 34, 0.1);
+  animation: pixelate 0.5s infinite steps(2);
+}
+
+[data-tema="matrix"] {
+  --color-fondo: var(--negro);
+  --color-texto: #00ff41;
+  --color-sombra: 0 0 10px #00ff41;
+  --color-boton: rgba(0, 255, 65, 0.1);
+}
+
+[data-tema="sunset"] {
+  --color-fondo: #2c3e50;
+  --color-texto: #e74c3c;
+  --color-sombra: 0 0 10px #f39c12;
+  --color-boton: rgba(243, 156, 18, 0.1);
+}
